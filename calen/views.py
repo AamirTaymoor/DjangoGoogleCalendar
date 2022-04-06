@@ -2,7 +2,7 @@ from __future__ import print_function
 from ast import Del
 from time import strftime
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
 from httplib2 import Http
@@ -184,20 +184,23 @@ class CreateEv(View):
         #return HttpResponse('event created successfully')
 
 class DelEvent(View):
-    def get(self, request):
-        form = DeleteEvent()
-        return render(request, 'calen/del_event.html', {'form':form})
+    def get(self, request, pk):
+        val = pk
+        #form = DeleteEvent()
+        return render(request, 'calen/del_event.html',{'value':val})
     
-    def post(self, request):
-        form = DeleteEvent(request.POST)
-        if form.is_valid():
-            cal_id = form.cleaned_data['cal_id']
-            event_id = form.cleaned_data['event_id']
+    def post(self, request, pk):
+        #form = DeleteEvent(request.POST)
+        #if form.is_valid():
+        #cal_id = form.cleaned_data['cal_id']
+        event_id = pk
 
         try:
-            devent = service.events().delete(calendarId=cal_id, eventId=event_id).execute()
+            devent = service.events().delete(calendarId='primary', eventId=event_id).execute()
             instance = EventList.objects.get(ev_id=event_id)
-            return render(request, 'calen/succ_del_event.html')
+            instance.delete()
+            #return render(request, 'calen/succ_del_event.html')
+            return redirect ('event-list')
         except Exception as e:
             return HttpResponse("Event does not exist")
         

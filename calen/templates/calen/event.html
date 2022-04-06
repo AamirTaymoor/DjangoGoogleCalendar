@@ -7,9 +7,9 @@
     <td>{{ e.creator }}</td>
     <td>{{ e.start_time}}</td>
     <td>{{ e.end_time }}</td>
-    <td><a href ="{{ e.event_link }}"> {{ e.event_link }} </a></td>
-    <td><a href ="{% url 'update-event' %}"> Edit </a>
-        <a href="#">Delete</a>
+    <td><a href ="{{e.event_link }}"> {{ e.event_link }} </a></td>
+    <td><a class="button1" href ="{% url 'update-event'  %}"> Edit </a>
+        <a class="button2" href="{% url 'delete-event'  e.ev_id%}">Delete</a>
     </td>
 </tr>
 {% endfor %}

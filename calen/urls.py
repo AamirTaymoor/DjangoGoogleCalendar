@@ -7,7 +7,7 @@ urlpatterns = [
     path('callist/', views.CalendarList.as_view(), name='calendar-list'),
     path('evlist/', views.EvList.as_view(), name='event-list'),
     path('crev/', views.CreateEv.as_view(), name='create-event'),
-    path('delev/', views.DelEvent.as_view(), name='delete-event'),
+    path('delev/<str:pk>', views.DelEvent.as_view(), name='delete-event'),
     path('upev/', views.UpdEvent.as_view(), name='update-event'),
     path('home/', views.Home, name='home-page'),
 ]
