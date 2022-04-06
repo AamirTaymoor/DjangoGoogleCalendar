@@ -1,0 +1,18 @@
+{% extends "calen/base.html" %}
+
+{% block content %}
+
+{% for record in c_list %} 
+  <tr>
+    <td>{{record.etag }}</td>
+    <td>{{record.c_id }}</td>
+    <td>{{record.summary }}</td>
+    <td>{{record.timezone }}</td>
+    <td>{{record.accessrole }}</td>
+  </tr>
+   
+{% endfor %}
+
+{% endblock %}
+
+ 
