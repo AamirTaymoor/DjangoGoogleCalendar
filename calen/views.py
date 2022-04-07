@@ -196,7 +196,7 @@ class DelEvent(View):
         event_id = pk
 
         try:
-            devent = service.events().delete(calendarId='primary', eventId=event_id).execute()
+            devent = service.events().delete(calendarId='primary',sendNotifications=True, sendUpdates='all', eventId=event_id).execute()
             instance = EventList.objects.get(ev_id=event_id)
             instance.delete()
             #return render(request, 'calen/succ_del_event.html')
