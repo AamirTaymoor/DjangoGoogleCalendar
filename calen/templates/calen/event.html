@@ -1,0 +1,16 @@
+{% extends "calen/base2.html" %}
+{% block content %}
+{% for e in eventlist %}
+<tr>
+    <td>{{ e.ev_id }}</td>
+    <td>{{ e.etag }}</td>
+    <td>{{ e.creator }}</td>
+    <td>{{ e.start_time}}</td>
+    <td>{{ e.end_time }}</td>
+    <td><a href ="{{e.event_link }}" target="_blank"> Link </a></td>
+    <td><a class="button1" href ="{% url 'update-event'  %}"> Edit </a>
+        <a class="button2" href="{% url 'delete-event'  e.ev_id%}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

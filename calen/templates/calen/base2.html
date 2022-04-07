@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'calen/base.css' %}"/>
+    <script src="{% static 'calen/base.js'%}"></script> 
+    <title>Events</title>
+    <style>
+    .button1 {
+      display: block;
+      width: 115px;
+      height: 25px;
+      background: #4E9CAF;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      line-height: 25px;
+  }
+  .button2 {
+      display: block;
+      width: 115px;
+      height: 25px;
+      background: #af694e;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      line-height: 25px;
+  }
+    </style>
+</head>                              
+<body>
+   
+    <section>
+        <!--for demo wrap-->
+        <h1>Event list Details</h1>
+
+        <div class="tbl-header">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                
+                <th>Event Id</th>
+                <th>etag</th>
+                <th>Creator</th>
+                <th>Start time</th>
+                <th>End time</th>
+                <th>Event Link</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="tbl-content">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+              
+                {% block content %} {% endblock %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+      
+      <!-- follow me template -->
+     
+</body>
+<script>
+  //  var elems = document.getElementsByClassName('button2');
+  //  var confirmIt = function (e) {
+    //  if (!confirm('Are You sure to delete the event?')) e.preventDefault();
+  //  };
+  //  for (var i=0, l=elems.length; i < l ; i++){
+  //  elems[i].addEventListener('click', confirmIt, false);
+  //  }
+</script>
+</html>
